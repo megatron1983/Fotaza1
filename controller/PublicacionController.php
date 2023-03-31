@@ -47,7 +47,7 @@ class PublicacionController extends ControladorBase{
                   $publicacion= new Publicacion();
                 
                     //Creamos una publicacion
-                    $publicacion->setFecha($_POST["fecha"]);
+                    $publicacion->setFecha( getdate());
                     $publicacion->setLicencia($_POST["licencia"]);
                     $publicacion->setCategoria($_POST["categoria"]);
                     $publicacion->setImagen($_POST["imagen"]);
