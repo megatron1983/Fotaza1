@@ -4,10 +4,6 @@ class Publicacion extends EntidadBase{
     private $fechaDePublicacion;
     private $titulo;
     private $imagen;
-    private $formato;
-    private $resolucion;
-    private $ancho;
-    private $alto;
     private $etiqueta1;
     private $etiqueta2;
     private $etiqueta3;
@@ -76,37 +72,6 @@ public function setImagen($imagen) {
   $this->imagen = $imagen;
 }
 
-public function getFormato() {
-  return $this->formato;
-}
-
-public function setFormato($formato) {
-  $this->formato = $formato;
-}
-
-public function getResolucion() {
-  return $this->resolucion;
-}
-
-public function setResolucion($resolucion) {
-  $this->resolucion = $resolucion;
-}
-
-public function getAncho() {
-  return $this->ancho;
-}
-
-public function setAncho($ancho) {
-  $this->ancho = $ancho;
-}
-
-public function getAlto() {
-  return $this->alto;
-}
-
-public function setAlto($alto) {
-  $this->alto = $alto;
-}
 
 public function getEtiqueta1() {
   return $this->etiqueta1;
@@ -132,13 +97,6 @@ public function setEtiqueta3($etiqueta3) {
   $this->etiqueta3 = $etiqueta3;
 }
 
-public function getEstado() {
-  return $this->estado;
-}
-
-public function setEstado($estado) {
-  $this->estado = $estado;
-}
 public function getPublica() {
   return $this->publica;
 }
@@ -148,23 +106,19 @@ public function setPublica($publica) {
 }
 
 public function alta(){
-  $query="INSERT INTO publicacion (publicacionId,usuarioId,categoriId,licenciaId,fechaDePublicacion,titulo,imagen,formato,resolucion,ancho,alto,etiqueta1,etiqueta2,etiqueta3,estado,publica)
+  $query="INSERT INTO publicacion (publicacionId,usuarioId,categoriId,licenciaId,titulo,imagen,etiqueta1,etiqueta2,etiqueta3,publica)
           VALUES(NULL,
                '".$this->usuarioId."',
 						   '".$this->categoriId."',
 						   '".$this->licenciaId."',
-						   '".$this->fechaDePublicacion."',
+						   
                '".$this->titulo."',
                '".$this->imagen."',
-						   '".$this->formato."',
-						   '".$this->resolucion."',
-               '".$this->ancho."',
-               '".$this->alto."',
+						   
 						   '".$this->etiqueta1."',
 						   '".$this->etiqueta2."',
                '".$this->etiqueta3."',
-               '".$this->estado."',
-               '".$this->publica."');";//que va aca Miguel?
+               '".$this->publica."');";
   $save=$this->db()->query($query);
   //$this->db()->error;
   return $save;

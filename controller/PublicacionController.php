@@ -45,17 +45,18 @@ class PublicacionController extends ControladorBase{
                
                   //almacenar el archivo
                   $publicacion= new Publicacion();
-                
+                  //var_dump(getdate());
+                      //return;
                     //Creamos una publicacion
-                    $publicacion->setFecha( getdate());
-                    $publicacion->setLicencia($_POST["licencia"]);
-                    $publicacion->setCategoria($_POST["categoria"]);
+                
+                    $publicacion->setLicenciaId($_POST["licencia"]);
+                    $publicacion->setCategoriaId($_POST["categoria"]);
                     $publicacion->setImagen($_POST["imagen"]);
                     $publicacion->setTitulo($_POST["titulo"]);
-                    $publicacion->setetiqueta1($_POST["etiqueta1"]);
-                    $publicacion->setetiqueta2($_POST["etiqueta2"]);
-                    $publicacion->setetiqueta3($_POST["etiqueta3"]);
-                    $publicacion->setetpublica($_POST["publica"]);
+                    $publicacion->setEtiqueta1($_POST["etiqueta1"]);
+                    $publicacion->setEtiqueta2($_POST["etiqueta2"]);
+                    $publicacion->setEtiqueta3($_POST["etiqueta3"]);
+                    $publicacion->setPublica($_POST["publica"]);
                 
                      //-------------------------------------------------
                     $nombreUnico = "default.jpg";
@@ -82,12 +83,12 @@ class PublicacionController extends ControladorBase{
 //-------------------------------------------------
 
 
-                    $save=$publicacion->save();
+                    $save=$publicacion->alta();
                     $this->redirect("usuario", "index");
                 
                 }
                  else{
-                      var_dump($_POST);
+                      //var_dump($_POST);
                       return;//Por aca entra cuando un campo esta vacio
                       $alert=true;
                       $mensaje="Datos imcompletos!";
